@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <style>
+
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: 24px;
+            font-weight: bold;
+        }
+         .custom-label {
+            font-size: 18px;
+            color: #333;
+
+        }
+
+        .description-container {
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 60%;
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+
+        }
+        .appointment-button {
+            position: absolute;
+            right: 678px;
+            bottom: 206px;
+            font-weight: bold;
+
+        }
+        #appointmentButton {
+            display: none;
+        }
+        body {
+            background-color: #F6F6F2;
+        }
+    </style>
+
+    <title>Pediatric Doctors</title>
+    <script>
+        var makeAppointmentUrlBase = "{{ make_appointment_view_url }}";
+
+        function redirectToAppointment() {
+            var selectedDoctor = document.getElementById("doctorSelect").value;
+            if (selectedDoctor) {
+                window.location.href = makeAppointmentUrlBase + selectedDoctor + "/";
+            }
+        }
+
+
+        function showAppointmentButton() {
+            var selectedDoctor = document.getElementById("doctorSelect").value;
+            if (selectedDoctor) {
+                document.getElementById("appointmentButton").style.display = "block";
+            } else {
+                document.getElementById("appointmentButton").style.display = "none";
+            }
+        }
+    </script>
+
+    <body>
+
+    <div style="height:120px;"></div>
+
+
+        <div class="content-container">
+            <div class="description-container">
+                <h2>About General Medicine Consultation</h2>
+                <p>
+                    A general medicine consultation provides a holistic approach to healthcare, serving as the first point of contact for patients with a wide range of medical concerns. This consultation aims to diagnose, treat, and manage various illnesses and conditions, from common colds and flu to chronic diseases like diabetes and hypertension. These consultations also include preventive care services like vaccinations, lifestyle counseling, and regular screenings.
+                </p>
+            </div>
+        <div class="center-content">
+        <label for="doctorSelect">Choose a general medicine doctor:</label>
+        <select id="doctorSelect" class="custom-label" name="doctor" onchange="showAppointmentButton()">
+            <option value="">Select a Doctor</option>
+            {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">Dr. {{ doctor.first_name }} {{ doctor.last_name }}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <button id="appointmentButton" class="appointment-button" onclick="redirectToAppointment()">Make an Appointment</button>
+    </div>
+    </body>
+
+
+{% endblock %}

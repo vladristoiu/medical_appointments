@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'navbar.html' %}
+<div style="height: 60px;"></div>
+<style>
+    body {
+            background-color: #F6F6F2;
+        }
+    </style>
+
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <h1>Make an Appointment with Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h1>
+    <div style="height: 30px;"></div>
+    <form method="post" style="display: flex; flex-direction: column; align-items: flex-start; ">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="align-self: flex-end;">Make Appointment</button>
+    </form>
+
+    <div style="margin-top: 180px;">
+        <a href="{% url 'doctor_calendar' doctor.id %}"
+           style="display: inline-block; padding: 10px 20px; text-align: center; text-decoration: none; background-color: #22EBFF; color: black; border-radius: 4px; transition: background-color 0.3s; cursor: pointer;">
+            View Doctor Schedule
+        </a>
+    </div>
+</div>
+
+{% endblock content %}

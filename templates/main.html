@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style1.css' %}">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid">
+
+    <a class="navbar-brand " >
+         <img src="{% static 'photos/logo-removebg-preview.png' %}" alt="Logo" class="logo" >BeHealthy Clinic </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav custom-nav m1-auto ">
+        <li class="nav-item ">
+         <input type="button" class="nav-link active custom-input" value="  Login  " onclick="location.href='{% url 'authentication-view' %}'">
+        </li>
+        <li class="nav-item ">
+          <input type="button" class="nav-link active custom-input" value="Register" onclick="location.href='{% url 'register-view' %}'">
+        </li>
+           </ul>
+
+
+        </div>
+    </div>
+    </nav>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+
+    <img src="{% static 'photos/doctor.jpg' %}"  alt="Halfpage Image" class="halfpage-image ">
+    <img src="{% static 'photos/carnet.jpg' %}"  alt="Quarterpage Image1" class="quartepage-image1">
+    <img src="{% static 'photos/women.jpg' %}"  alt="Quarterpage Image2" class="quartepage-image2">
+    <img src="{% static 'photos/ekg3.jpg' %}"  alt="Quarterpage Image3" class="quartepage-image3">
+
+    <style>
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+      margin: 5.5%;
+      padding: 0;
+
+    }
+    .text {
+      font-size: 24px;
+        font-weight: bold;
+        white-space: pre-wrap;
+        font-family: Arial, sans-serif;
+        color: black;
+
+
+    }
+  </style>
+    <div class="container">
+    <div class="text">
+        Welcome to BeHealty clinic.
+         Your health and well-being
+             are our top priorities
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock content %}

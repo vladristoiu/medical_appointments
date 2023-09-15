@@ -1,0 +1,41 @@
+
+body {
+    background-color: #F8F9FB;
+    margin: 0;
+    padding: 0;
+}
+
+.register-container {
+    display: flex;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 900px;
+    height: 400px;
+    margin: auto;
+    background-color: #fff;
+}
+
+
+.register-form {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+
+.register-image {
+    flex: 2;
+    padding: 20px;
+    min-width: 400px;
+}
+
+.register-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navbar {
+    border-bottom: 3px solid black;
+}

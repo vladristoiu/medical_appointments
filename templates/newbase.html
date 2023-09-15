@@ -1,0 +1,120 @@
+{% extends "base.html " %}
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+
+    <style>
+    body {
+
+    background-color: #F6F6F2;
+}
+
+        .card {
+            height: 100%;
+        }
+        .card-img-top {
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+        }
+        .custom-button {
+            background-color: #22EBFF;
+            color: black;
+            font-weight: bold;
+        }
+
+        h1.welcome-title {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    </style>
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid">
+        <a class="navbar-brand">
+            <img src="{% static 'photos/logo-removebg-preview.png' %}" alt="Logo" class="logo">BeHealthy Clinic</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav custom-nav">
+                <li class="nav-item">
+                    <input type="button" class="nav-link" value="Logout" onclick="location.href='{% url 'logout-view' %}'">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <div style="height:90px;"></div>
+
+    <div class="container mt-5">
+        <h1 class="welcome-title">Welcome to your Healthy Life!</h1>
+
+    </div>
+
+    <div class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'photos/profile.jpg' %}" alt="Profile Photo">
+                <div class="card-body">
+
+                    <p class="card-text">Here you can view and edit your personal details.</p>
+                    <a href="{% url 'profile-view' %}" class="btn btn-primary custom-button">Profile</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'photos/services.jpg' %}" alt="Services Photo">
+                <div class="card-body">
+                    <p class="card-text">Here you can choose the type of service you desire, select the doctor of your choice, and then schedule an appointment.</p>
+                    <a href="{% url 'service-view' %}" class="btn btn-primary custom-button">Services</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'photos/appointments.jpg' %}" alt="Appointments Photo">
+                <div class="card-body">
+
+                    <p class="card-text">Here you will find a list of your appointments, both past and upcoming.</p>
+                    <a href="{% url 'patient-appointments-view' %}" class="btn btn-primary custom-button">Appointments Calendar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div style="height:130px;"></div>
+
+{% endblock content %}

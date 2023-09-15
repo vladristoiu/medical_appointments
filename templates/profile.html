@@ -1,0 +1,85 @@
+{% extends "base.html " %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+    {% include 'navbar.html' %}
+    <div style="height:130px;"></div>
+
+<style>
+    .profile-section, .edit-section {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 20px;
+        width: 45%;
+            background-color: #FFFFFF;
+
+    }
+    .profile-section h2, .edit-section h2 {
+        text-decoration: underline;
+    }
+    input[type="submit"] {
+        background-color: #22EBFF;;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .save-button {
+        margin-top: 20px;
+        float: right;
+}
+    .edit-profile-label,
+    .edit-profile-input {
+        margin-bottom: 15px;
+}
+
+
+        body {
+            background-color: #F6F6F2;
+        }
+
+
+
+
+</style>
+
+<div class="container d-flex justify-content-between">
+
+    <div class="profile-section">
+        <h2>User Profile</h2>
+        <p>Full Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p>Birth Date: {{ user.birth_date }}</p>
+        <p>Address: {{ user.adress }}</p>
+        <p>Phone Number: {{ user.phone_number }}</p>
+        <p>Email: {{ user.email }}</p>
+    </div>
+
+
+    <div class="edit-section">
+        <h2>Edit Profile</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="first_name" class="edit-profile-label">First Name:</label>
+            <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" class="edit-profile-input" style="margin-left: 28px;"><br>
+            <label for="last_name" class="edit-profile-label">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}" class="edit-profile-input" style="margin-left: 29px;"><br>
+            <label for="birth_date" class="edit-profile-label">Birth Date:</label>
+            <input type="date" id="birth_date" name="birth_date" value="{{ user.birth_date }}"  style="margin-left: 36px;"><br>
+            <label for="adress" class="edit-profile-label">Address:</label>
+            <input type="text" id="adress" name="adress" value="{{ user.adress }}" class="edit-profile-input" style="margin-left: 49px;"><br>
+            <label for="phone_number" class="edit-profile-label">Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ user.phone_number }}" class="edit-profile-input" ><br>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="{{ user.email }}" style="margin-left: 68px;"><br>
+            <input type="submit" value="Save" class="save-button">
+        </form>
+    </div>
+</div>
+
+
+{% endblock content %}

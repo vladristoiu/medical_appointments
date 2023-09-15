@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<head>
+    <title>Calendar for Dr. {{ doctor.first_name }} {{ doctor.last_name }}</title>
+    <style>
+        .tables-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+
+        }
+        .table-section {
+            width: 45%;
+
+        }
+        .table-wrapper {
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: auto;
+            background-color: #F8F9FB;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f5f5f5;
+
+        }
+
+
+
+        .doctor-schedule-time {
+             background-color: #E5F6DF
+}
+
+        .booked-appointments-time {
+            background-color: #F0A8AB;
+}
+        body {
+            background-color: #F6F6F2;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div style="height: 100px;"></div>
+
+    <h2 style="text-align: center;">Calendar for Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h2>
+
+    <div style="height: 50px;"></div>
+
+    <div class="tables-container">
+
+
+    <div class="table-section table-wrapper">
+        <h3>Doctor Schedule</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                <tr >
+                    <td>{{ schedule.day_of_week }}</td>
+                    <td class="doctor-schedule-time">{{ schedule.start_time }} - {{ schedule.end_time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="table-section table-wrapper">
+        <h3>Booked Appointments</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.date }}</td>
+                    <td class="booked-appointments-time">{{ appointment.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div style="position: fixed; bottom: 10px; right: 10px;">
+    <button style="background-color: #22EBFF; color: black " onclick="goBack()" class="btn btn-primary">Go Back</button>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<div style="height: 100px;"></div>
+
+
+</body>
+{% endblock content %}

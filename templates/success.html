@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include 'navbar.html' %}
+
+
+
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            flex-direction: column;
+            background-color: #F6F6F2;
+
+        }
+
+        h2, a {
+            text-align: center;
+        }
+
+
+
+        .black {
+            color: black;
+            display: flex;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .return-homepage {
+            position: fixed;
+            bottom: 30px;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            display: flex;
+                justify-content: center;
+
+        }
+    </style>
+</head>
+<body>
+    <h2>Your appointment has been booked successfully!</h2>
+    <h2>Please arrive 15 minutes before your appointment.</h2>
+    <h2>If you encounter any issues or have questions, please contact us at </h2>
+    <u><a href="mailto:behealthy1967@gmail.com" class="black ">behealthy1967@gmail.com</a></u>
+
+
+    <div class="return-homepage">
+    <a href="{% url 'dashboard-view' %}">Return to homepage</a>
+</div>
+
+</body>
+
+{% endblock content %}
